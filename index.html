@@ -355,7 +355,7 @@ window.addEventListener('scroll', function() {
             font-size: 0.9rem;
             "><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"/></svg>Precios</a>
             
-            <a href="#calendario" style="
+            <a href="#reservar" style="
             color: #222;
             text-decoration: none;
             font-weight: 500;
@@ -520,35 +520,43 @@ window.addEventListener('scroll', function() {
     </header>
 
     <!-- Carousel -->
+    <style>
+        .carousel-container {
+            border-radius: 0 !important;
+        }
+        .carousel-slide img {
+            border-radius: 0 !important;
+        }
+    </style>
     <div id="carouselExampleIndicators" class="carousel slide carousel-container" data-bs-ride="carousel" style="max-width: 1200px; width: 90vw;"></div>
             <div class="carousel-slide">
-                <img src="images/piscina.jpg" alt="Evento 1" style="object-position: center top; height: 600px;">
+                <img src="images/piscina.jpg" alt="Evento 1" style="object-position: top; height: 800px;">
             </div>
             
             <div class="carousel-slide">
-                <img src="images/piscina2.jpg" alt="Evento 2" style="height: 600px;">
+                <img src="images/piscina2.jpg" alt="Evento 2" style="height: 800px;">
 
             </div>
             <div class="carousel-slide">
-                <img src="images/palmera.jpg" alt="Evento 4" style="height: 600px;">
+                <img src="images/palmera.jpg" alt="Evento 3" style="height: 800px;">
             </div>
             <div class="carousel-slide">
-                <img src="images/piscina lejos.jpg" alt="Evento 4" style="height: 600px;">
+                <img src="images/piscina lejos.jpg" alt="Evento 4" style="height: 800px;">
             </div>
             <div class="carousel-slide">
-                <img src="images/piscina cerca.jpg" alt="Evento 4" style="height: 600px;">
+                <img src="images/piscina cerca.jpg" alt="Evento 5" style="height: 800px;">
             </div>
             <div class="carousel-slide">
-                <img src="images/quincho.jpg" alt="Evento 4" style="height: 600px;">
+                <img src="images/quincho.jpg" alt="Evento 6" style="height: 800px;">
             </div>
              <div class="carousel-slide">
-                <img src="images/mesas.jpg" alt="Evento 4" style="height: 600px;">
+                <img src="images/mesas.jpg" alt="Evento 7" style="height: 800px;">
             </div>
             <div class="carousel-slide">
-                <img src="images/cancha.jpg" alt="Evento 4" style="height: 600px;">
+                <img src="images/cancha.jpg" alt="Evento 8" style="height: 800px;">
             </div>
             <div class="carousel-slide">
-                <img src="images/frontis.jpg" alt="Evento 4" style="height: 600px;">
+                <img src="images/frontis.jpg" alt="Evento 9" style="height: 800px;">
             </div>
             
 
@@ -565,6 +573,11 @@ window.addEventListener('scroll', function() {
             <span class="dot" onclick="currentSlide(2)"></span>
             <span class="dot" onclick="currentSlide(3)"></span>
             <span class="dot" onclick="currentSlide(4)"></span>
+            <span class="dot" onclick="currentSlide(5)"></span>
+            <span class="dot" onclick="currentSlide(6)"></span>
+            <span class="dot" onclick="currentSlide(7)"></span>
+            <span class="dot" onclick="currentSlide(8)"></span>
+             <span class="dot" onclick="currentSlide(8)"></span>
         </div>
     </div>
 
@@ -648,22 +661,39 @@ window.addEventListener('scroll', function() {
         <p>
             En el <strong>Centro de eventos Montpellier</strong> nos especializamos en hacer de cada ocasión un momento único e inolvidable. Nuestro espacio está diseñado para adaptarse a todo tipo de celebraciones: matrimonios, cumpleaños, eventos corporativos y mucho más. Contamos con un equipo profesional y servicios personalizados para que solo te preocupes de disfrutar. ¡Ven y crea tus mejores recuerdos con nosotros!
         </p>
+        
     </section>
       <!-- Video Section -->
     <section class="about" id="video-section" style="margin: 2rem auto; background: white; position: relative; overflow: hidden;">
         <h2 style="color: var(--accent); margin-bottom: 2rem;">Conoce Nuestras Instalaciones</h2>
         
         <div class="video-wrapper" style="position: relative; padding-bottom: 56.25%; height: 0; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 24px rgba(0,0,0,0.15); opacity: 0; transform: translateY(50px); animation: fadeInUp 1s ease forwards; max-width: 100%; margin: 0 auto;">
-            <video 
-                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;"
-                src="/videos/video1.mp4"
-                title="Centro de eventos Montpellier"
-                autoplay
-                controls
-                loop
-                playsinline>
-            </video>
+           <iframe 
+    id="autoplayVideo"
+    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;"
+    src="https://drive.google.com/file/d/16khxiwC7KQplQ2t-WqbP0CAMSzUz5GbS/preview"
+    title="Centro de eventos Montpellier"
+    allow="autoplay; fullscreen"
+    allowfullscreen
+></iframe>
+            
         </div>
+
+        <script>
+            // Using Intersection Observer to detect when video is visible
+            const video = document.getElementById('autoplayVideo');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        video.play();
+                    } else {
+                        video.pause();
+                    }
+                });
+            }, { threshold: 0.5 }); // Trigger when 50% of video is visible
+
+            observer.observe(video);
+        </script>
     </section>
     
 
@@ -912,7 +942,7 @@ window.addEventListener('scroll', function() {
     </div>
      </section>
   
-<section id="contacto">
+<section id="contacto"> 
     <div class="button-container" style="display: flex; justify-content: center; gap: 15px; margin: 2rem auto 3rem; position: relative; z-index: 1;">
     <!-- WhatsApp Button -->
     <a id="contacto" class="action-btn" href="https://wa.me/56912345678?text=Hola%20Centro%20de%20eventos%20Montpellier%2C%20quiero%20más%20información" target="_blank" rel="noopener" style="display: flex; align-items: center; width: 180px; justify-content: center; background: #25D366; color: white; text-decoration: none; padding: 12px 20px; border-radius: 50px; font-size: 16px; font-weight: 500; transition: all 0.3s ease;">
@@ -921,7 +951,15 @@ window.addEventListener('scroll', function() {
         </svg>
         Contáctanos
     </a>
-    <!-- Email Button -->
+    <!-- Phone Call Button -->
+    <a class="action-btn" href="tel:+56443542010" style="display: flex; align-items: center; width: 180px; justify-content: center; background: #2196F3; color: white; text-decoration: none; padding: 12px 20px; border-radius: 50px; font-size: 16px; font-weight: 500; transition: all 0.3s ease;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" style="margin-right: 8px;">
+            <path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56-.35-.12-.74-.03-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z"/>
+        </svg>
+        Llamar
+    </a>
+   
+     <!-- Email Button -->
     <a class="action-btn" href="#email-modal" onclick="openModal()" style="display: flex; align-items: center; width: 180px; justify-content: center; background: #d44638; color: white; text-decoration: none; padding: 12px 20px; border-radius: 50px; font-size: 16px; font-weight: 500; transition: all 0.3s ease;">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" style="margin-right: 8px;">
             <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
@@ -1005,11 +1043,6 @@ window.addEventListener('scroll', function() {
         transition: all 0.3s ease;
         box-sizing: border-box;
     }
-    .action-btn:hover {
-        filter: brightness(1.2);
-        transform: scale(1.05);
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    }
     #contact-form button:hover {
         filter: brightness(1.2);
     }
@@ -1062,9 +1095,11 @@ window.addEventListener('scroll', function() {
             margin: 1.5rem auto;
         }
         .action-btn {
-            width: 150px;
+            width: 1px;
             padding: 10px 15px;
             font-size: 14px;
+            flex: 1 1 calc(50% - 10px);
+
         }
         .action-btn svg {
             width: 20px;
@@ -1106,6 +1141,7 @@ window.addEventListener('scroll', function() {
             width: 140px;
             padding: 8px 12px;
             font-size: 13px;
+            flex: 1 0 calc(100% - 20px);
         }
         .action-btn svg {
             width: 18px;
@@ -1156,6 +1192,71 @@ window.addEventListener('scroll', function() {
  
 </body>
 <!-- Footer -->
+<!-- Botón flotante "Volver arriba" -->
+<style>
+#back-to-top {
+    position: fixed;
+    bottom: 32px;
+    right: 32px;
+    z-index: 1200;
+    background: #4285f4;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 56px;
+    height: 56px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s, transform 0.2s;
+    font-size: 28px;
+}
+#back-to-top.show {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+}
+#back-to-top:hover {
+    background: #3367d6;
+    transform: scale(1.08);
+}
+@media (max-width: 600px) {
+    #back-to-top {
+        width: 44px;
+        height: 44px;
+        font-size: 22px;
+        bottom: 16px;
+        right: 16px;
+    }
+}
+</style>
+<button id="back-to-top" aria-label="Volver arriba" title="Volver arriba">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+        <path d="M12 5l-7 7h4v7h6v-7h4l-7-7z" fill="currentColor"/>
+    </svg>
+</button>
+<script>
+const backToTopBtn = document.getElementById('back-to-top');
+window.addEventListener('scroll', () => {
+    if (window.scrollY > 350) {
+        backToTopBtn.classList.add('show');
+    } else {
+        backToTopBtn.classList.remove('show');
+    }
+});
+backToTopBtn.addEventListener('click', () => {
+    const carousel = document.getElementById('carouselExampleIndicators');
+    if (carousel) {
+        carousel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    } else {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+});
+</script>
 <footer style="background: #333; color: white; text-align: center; padding: 20px; margin-top: 40px;">
     <div style="display: flex; align-items: center; justify-content: center; gap: 10px;">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" style="color: #3DDC84;">
