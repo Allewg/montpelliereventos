@@ -224,6 +224,7 @@
             pointer-events: none;
             z-index: 1;
         }
+        
     </style>
 </head>
 <body class="bg-white text-dark-elegant font-sans antialiased">
@@ -303,56 +304,95 @@
     <div class="pt-20"></div>
 
     <!-- SECCIÓN CARRUSEL HERO -->
-    <section id="inicio" class="w-full min-h-screen relative overflow-hidden">
-        <div class="swiper carousel-swiper">
-            <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                    <img src="images/palmera.jpg" alt="Salón principal del Centro Montpellier" loading="fast">
-                </div>
-                <div class="swiper-slide">
-                    <img src="images/piscina lejos.jpg" alt="Jardín exterior para eventos" loading="lazy">
-                </div>
-                <div class="swiper-slide">
-                    <img src="images/frontis.jpg" alt="Área de catering elegante" loading="lazy">
-                </div>
-                <div class="swiper-slide">
-                    <img src="images/quincho.jpg" alt="Sala de conferencias" loading="lazy">
-                </div>
-                <div class="swiper-slide">
-                    <img src="images/cancha.jpg" alt="Decoración para bodas" loading="lazy">
-                </div>
-                <div class="swiper-slide relative bg-gradient-to-br from-dark-elegant via-dark-elegant to-gold/20">
-                    <div class="hero-overlay">
-                        <div class="text-center space-y-8 max-w-4xl mx-auto">
-                            <br>
-                            <br>
-                            <h1 class="text-3xl md:text-6xl font-bold text-white mb-4 leading-tight py-2">
-                                Ven a darte un minuto de descanso con nosotros
-                            </h1>
-                            <a href="https://wa.me/56948466560?text=Hola%20Centro%20de%20eventos%20Montpellier%2C%20quiero%20m%C3%A1s%20informaci%C3%B3n" 
-                               target="_blank" 
-                               rel="noopener noreferrer"
-                               class="inline-flex items-center bg-gold text-dark-elegant px-8 py-4 rounded-full font-semibold text-lg hover:scale-105 hover:shadow-lg transition-all duration-300 pulse mb-4"
-                               aria-label="Contactar por WhatsApp">
-                                <i data-lucide="message-circle" class="w-6 h-6 mr-2"></i>
-                                Contacto
-                            </a>
-                            <button id="open-video-modal" 
-                                    class="inline-flex items-center bg-transparent border-2 border-gold text-gold px-8 py-4 rounded-full font-semibold text-lg hover:bg-gold hover:text-dark-elegant transition-all duration-300 hover:scale-105"
-                                    aria-label="Abrir video en popup">
-                                <i data-lucide="play-circle" class="w-6 h-6 mr-2"></i>
-                                Ver Video
-                            </button>
-                        </div>
+<section id="inicio" class="w-full min-h-screen relative overflow-hidden">
+    <div class="swiper carousel-swiper h-screen">  <!-- Agrega h-screen para altura full viewport -->
+        <div class="swiper-wrapper">
+            <div class="swiper-slide flex items-center justify-center">  <!-- Agrega flex para centrar -->
+                <img src="images/piscina lejos.jpg" 
+                     alt="Salón principal del Centro Montpellier" 
+                     loading="fast"
+                     class="w-full h-full max-w-full max-h-full object-contain">  <!-- Clases clave aquí -->
+            </div>
+            <div class="swiper-slide flex items-center justify-center">
+                <img src="images/sillas-playa.jpg" 
+                     alt="Jardín exterior para eventos" 
+                     loading="lazy"
+                     class="w-full h-full max-w-full max-h-full object-contain">
+            </div>
+            <div class="swiper-slide flex items-center justify-center">
+                <img src="images/PiscinaCompleta.jpg" 
+                     alt="Jardín exterior para eventos" 
+                     loading="lazy"
+                     class="w-full h-full max-w-full max-h-full object-contain">
+            </div>
+            <div class="swiper-slide flex items-center justify-center">
+                <img src="images/quincho.jpg" 
+                     alt="Sala de conferencias" 
+                     loading="lazy"
+                     class="w-full h-full max-w-full max-h-full object-contain">
+            </div>
+            <div class="swiper-slide flex items-center justify-center">
+                <img src="images/cancha.jpg" 
+                     alt="Decoración para bodas" 
+                     loading="lazy"
+                     class="w-full h-full max-w-full max-h-full object-contain">
+            </div>
+            <div class="swiper-slide flex items-center justify-center">
+                <img src="images/bañoshd.jpg" 
+                     alt="Decoración para bodas" 
+                     loading="lazy"
+                     class="w-full h-full max-w-full max-h-full object-contain">
+            </div>
+            <div class="swiper-slide flex items-center justify-center">
+                <img src="images/bañoshd2.jpg" 
+                     alt="Decoración para bodas" 
+                     loading="lazy"
+                     class="w-full h-full max-w-full max-h-full object-contain">
+            </div>
+            <div class="swiper-slide flex items-center justify-center">
+                <img src="images/jardin.jpg" 
+                     alt="Área de catering elegante" 
+                     loading="lazy"
+                     class="w-full h-full max-w-full max-h-full object-contain">
+            </div>
+            <div class="swiper-slide flex items-center justify-center">
+                <img src="images/frontis.jpg" 
+                     alt="Área de catering elegante" 
+                     loading="lazy"
+                     class="w-full h-full max-w-full max-h-full object-contain">
+            </div>
+            
+            <!-- El slide de texto overlay no necesita img, pero si quieres fondo, aplica lo mismo -->
+            <div class="swiper-slide relative bg-gradient-to-br from-dark-elegant via-dark-elegant to-gold/20 h-full flex items-center justify-center">  <!-- Agrega h-full y flex para consistencia -->
+                <div class="hero-overlay">
+                    <div class="text-center space-y-8 max-w-4xl mx-auto">
+                        <br><br>
+                        <h1 class="text-3xl md:text-6xl font-bold text-white mb-4 leading-tight py-2">
+                            Ven a darte un minuto de descanso con nosotros
+                        </h1>
+                        <a href="https://wa.me/56948466560?text=Hola%20Centro%20de%20eventos%20Montpellier%2C%20quiero%20m%C3%A1s%20informaci%C3%B3n" 
+                           target="_blank" 
+                           rel="noopener noreferrer"
+                           class="inline-flex items-center bg-gold text-dark-elegant px-8 py-4 rounded-full font-semibold text-lg hover:scale-105 hover:shadow-lg transition-all duration-300 pulse mb-4"
+                           aria-label="Contactar por WhatsApp">
+                            <i data-lucide="message-circle" class="w-6 h-6 mr-2"></i>
+                            Contacto
+                        </a>
+                        <button id="open-video-modal" 
+                                class="inline-flex items-center bg-transparent border-2 border-gold text-gold px-8 py-4 rounded-full font-semibold text-lg hover:bg-gold hover:text-dark-elegant transition-all duration-300 hover:scale-105"
+                                aria-label="Abrir video en popup">
+                            <i data-lucide="play-circle" class="w-6 h-6 mr-2"></i>
+                            Ver Video
+                        </button>
                     </div>
                 </div>
             </div>
-            <div class="swiper-pagination"></div>
-            <div class="swiper-button-prev"></div>
-            <div class="swiper-button-next"></div>
         </div>
-    </section>
-
+        <div class="swiper-pagination"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+    </div>
+</section>
     <!-- SECCIÓN PRECIOS -->
     <section id="servicios" class="precios-section bg-gray-100 py-20">
         <div class="precios-card relative bg-white rounded-2xl shadow-xl p-10 max-w-2xl mx-auto border border-gray-200 transition-all duration-500 transform-gpu hover:rotate-y-3 hover:shadow-2xl hover:border-gold">
@@ -395,14 +435,14 @@
                     <i data-lucide="users" class="w-6 h-6 text-gold"></i>
                     <div>
                         <h4 class="font-semibold text-lg text-gold">Persona adicional</h4>
-                        <p class="text-gray-600">$5000 c/u</p>
+                        <p class="text-gray-600">$6000 c/u</p>
                     </div>
                 </li>
                 <li class="border-t border-gray-200 pt-6 flex items-start gap-4">
                     <i data-lucide="maximize" class="w-6 h-6 text-gold"></i>
                     <div>
                         <h4 class="font-semibold text-lg text-gold">Capacidad</h4>
-                        <p class="text-gray-600">Habilitado para 150 personas</p>
+                        <p class="text-gray-600">Habilitado para 250 personas</p>
                     </div>
                 </li>
             </ul>
