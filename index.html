@@ -13,6 +13,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
    
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script>
         tailwind.config = {
             theme: {
@@ -841,9 +842,6 @@
                 <div class="swiper-slide flex items-center justify-center">
                     <img src="images/jardin.jpg" alt="Jardín del centro" loading="lazy" class="w-full h-full object-cover">
                 </div>
-                <div class="swiper-slide flex items-center justify-center">
-                    <img src="images/frontis.jpg" alt="Fachada frontal" loading="lazy" class="w-full h-full object-cover">
-                </div>
                 
                 <!-- Slide de texto overlay -->
                 <div class="swiper-slide relative bg-gradient-to-br from-dark-elegant via-dark-elegant to-gold-accent/30 h-full flex items-center justify-center">
@@ -1340,9 +1338,22 @@
     </div>
 
     <!-- Botón Flotante: Volver Arriba -->
-    <button id="scroll-top" class="fixed bottom-8 right-8 bg-gradient-to-br from-gold-accent to-yellow-400 text-dark-elegant p-4 rounded-full shadow-xl hover:shadow-2xl hover:scale-110 transition-all duration-300 opacity-0 invisible z-40" aria-label="Volver al inicio">
+    <button id="scroll-top" class="fixed bottom-8 left-8 bg-gradient-to-br from-gold-accent to-yellow-400 text-dark-elegant p-4 rounded-full shadow-xl hover:shadow-2xl hover:scale-110 transition-all duration-300 opacity-0 invisible z-40" aria-label="Volver al inicio">
         <i data-lucide="arrow-up" class="w-6 h-6"></i>
     </button>
+
+    <!-- Botón Flotante: WhatsApp -->
+    <a href="https://wa.me/56948466560?text=Hola%20Centro%20de%20eventos%20Montpellier%2C%20quiero%20m%C3%A1s%20informaci%C3%B3n" 
+       target="_blank" 
+       rel="noopener noreferrer"
+       class="fixed bottom-8 right-8 bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-xl hover:shadow-2xl hover:scale-110 transition-all duration-300 z-40 group flex items-center gap-3"
+       aria-label="Contactar por WhatsApp"
+       title="Contactar por WhatsApp">
+        <span class="bg-green-500 text-white px-3 py-2 rounded-lg text-sm font-semibold whitespace-nowrap pointer-events-none">
+            ¡Contáctanos!
+        </span>
+        <i class="fab fa-whatsapp text-lg group-hover:rotate-12 transition-transform duration-300"></i>
+    </a>
 
     <!-- Lucide Icons CDN -->
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
