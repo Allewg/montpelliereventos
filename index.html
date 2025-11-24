@@ -12,8 +12,10 @@
     <meta property="og:image" content="logo.png">
     <script src="https://cdn.tailwindcss.com"></script>
    
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@2.7.2/css/lightgallery.min.css" integrity="sha256-o4cPyJ8+nQpKhzYdQbX9Ix6cLm+JqAUCaPNgm6kKiCk=" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script>
         tailwind.config = {
             theme: {
@@ -785,6 +787,7 @@
                 <li><a href="#inicio" class="nav-link flex items-center space-x-1.5 px-4 py-2 rounded-lg hover:bg-white/5 transition-all duration-300" aria-label="Ir a Inicio"><i data-lucide="home" class="w-4 h-4"></i><span class="text-sm font-medium">Inicio</span></a></li>
                 <li><a href="#servicios" class="nav-link flex items-center space-x-1.5 px-4 py-2 rounded-lg hover:bg-white/5 transition-all duration-300" aria-label="Servicios"><i data-lucide="tag" class="w-4 h-4"></i><span class="text-sm font-medium">Precios</span></a></li>
                 <li><a href="#testimonios" class="nav-link flex items-center space-x-1.5 px-4 py-2 rounded-lg hover:bg-white/5 transition-all duration-300" aria-label="Testimonios"><i data-lucide="star" class="w-4 h-4"></i><span class="text-sm font-medium">Testimonios</span></a></li>
+                <li><a href="#galeria" class="nav-link flex items-center space-x-1.5 px-4 py-2 rounded-lg hover:bg-white/5 transition-all duration-300" aria-label="Galería"><i data-lucide="image" class="w-4 h-4"></i><span class="text-sm font-medium">Galería</span></a></li>
                 <li><a href="#quienes-somos" class="nav-link flex items-center space-x-1.5 px-4 py-2 rounded-lg hover:bg-white/5 transition-all duration-300" aria-label="Quiénes Somos"><i data-lucide="users" class="w-4 h-4"></i><span class="text-sm font-medium">Nosotros</span></a></li>
                 <li><a href="#ubicacion" class="nav-link flex items-center space-x-1.5 px-4 py-2 rounded-lg hover:bg-white/5 transition-all duration-300" aria-label="Ubicación"><i data-lucide="map-pin" class="w-4 h-4"></i><span class="text-sm font-medium">Ubicación</span></a></li>
             </ul>
@@ -802,6 +805,7 @@
                     <li><a href="#inicio" class="nav-link flex items-center space-x-2 px-4 py-3 hover:bg-white/5 rounded-lg transition-all duration-300"><i data-lucide="home" class="w-4 h-4"></i><span class="text-sm font-medium">Inicio</span></a></li>
                     <li><a href="#servicios" class="nav-link flex items-center space-x-2 px-4 py-3 hover:bg-white/5 rounded-lg transition-all duration-300"><i data-lucide="tag" class="w-4 h-4"></i><span class="text-sm font-medium">Precios</span></a></li>
                     <li><a href="#testimonios" class="nav-link flex items-center space-x-2 px-4 py-3 hover:bg-white/5 rounded-lg transition-all duration-300"><i data-lucide="star" class="w-4 h-4"></i><span class="text-sm font-medium">Testimonios</span></a></li>
+                    <li><a href="#galeria" class="nav-link flex items-center space-x-2 px-4 py-3 hover:bg-white/5 rounded-lg transition-all duration-300"><i data-lucide="image" class="w-4 h-4"></i><span class="text-sm font-medium">Galería</span></a></li>
                     <li><a href="#quienes-somos" class="nav-link flex items-center space-x-2 px-4 py-3 hover:bg-white/5 rounded-lg transition-all duration-300"><i data-lucide="users" class="w-4 h-4"></i><span class="text-sm font-medium">Nosotros</span></a></li>
                     <li><a href="#ubicacion" class="nav-link flex items-center space-x-2 px-4 py-3 hover:bg-white/5 rounded-lg transition-all duration-300"><i data-lucide="map-pin" class="w-4 h-4"></i><span class="text-sm font-medium">Ubicación</span></a></li>
                 </ul>
@@ -873,6 +877,35 @@
             <div class="swiper-button-next"></div>
         </div>
     </section>
+
+    <!-- SECCIÓN GALERÍA -->
+    <section id="galeria" class="bg-gradient-to-br from-gray-50 via-white to-gray-50 py-20">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <div class="inline-block px-4 py-1.5 bg-gold-accent/20 border border-gold-accent/40 rounded-full mb-6">
+                    <span class="text-gold-accent text-xs font-semibold uppercase tracking-widest">Explora el Recinto</span>
+                </div>
+                <h2 class="text-4xl md:text-6xl font-bold text-dark-elegant mb-4">
+                    Galería de Experiencias
+                </h2>
+                <p class="text-gray-600 text-lg max-w-3xl mx-auto">
+                    Una selección curada de imágenes reales capturadas en nuestras instalaciones. Haz clic para ampliarlas en alta definición gracias a LightGallery.
+                </p>
+            </div>
+
+            <div id="gallery-grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6 auto-rows-[180px] md:auto-rows-[220px] lg:auto-rows-[260px]">
+                <!-- Contenido generado dinámicamente -->
+            </div>
+
+            <div class="text-center mt-12">
+                <a href="https://wa.me/56948466560?text=Hola%20Centro%20de%20eventos%20Montpellier%2C%20quiero%20agendar%20una%20visita" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center bg-gradient-to-r from-gold-accent to-yellow-300 text-dark-elegant px-10 py-4 rounded-full font-semibold text-base md:text-lg shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-300 gap-3 cta-primary">
+                    <i data-lucide="camera" class="w-5 h-5"></i>
+                    <span>Agenda tu evento con nosotros!</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
     <!-- SECCIÓN PRECIOS -->
     <section id="servicios" class="precios-section bg-gradient-to-br from-gray-50 via-white to-gray-50 py-20">
         <div class="container mx-auto px-4">
@@ -1280,6 +1313,7 @@
                         <li><a href="#inicio" class="text-gray-400 hover:text-gold-accent transition-colors">Inicio</a></li>
                         <li><a href="#servicios" class="text-gray-400 hover:text-gold-accent transition-colors">Precios</a></li>
                         <li><a href="#testimonios" class="text-gray-400 hover:text-gold-accent transition-colors">Testimonios</a></li>
+                        <li><a href="#galeria" class="text-gray-400 hover:text-gold-accent transition-colors">Galería</a></li>
                         <li><a href="#quienes-somos" class="text-gray-400 hover:text-gold-accent transition-colors">Nosotros</a></li>
                         <li><a href="#ubicacion" class="text-gray-400 hover:text-gold-accent transition-colors">Ubicación</a></li>
                     </ul>
@@ -1352,6 +1386,10 @@
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
     <!-- Swiper JS CDN -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <!-- LightGallery CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@2.7.2/lightgallery.min.js" integrity="sha256-LHFI8XbVivlTunP3e5+7Dn25eYoJM6W0l7McRqyt-ou" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@2.7.2/plugins/zoom/lg-zoom.min.js" integrity="sha256-XfHg+e1FX3hLEqEooctF+taXLH1KcBhl+PETKqs3c9U" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@2.7.2/plugins/thumbnail/lg-thumbnail.min.js" integrity="sha256-l1hIvOAKT2F+9nLI42nx3bNMO77VYdk4ymb6qAMRbrQ" crossorigin="anonymous"></script>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -1360,6 +1398,59 @@
             // Hamburger toggle
             const hamburger = document.getElementById('hamburger');
             const mobileMenu = document.getElementById('mobile-menu');
+
+            // Dynamic gallery
+            const galleryGrid = document.getElementById('gallery-grid');
+            if (galleryGrid) {
+                const galleryFiles = Array.from({ length: 31 }, (_, index) => `${index + 1}.jpeg`);
+                const highlightSpans = {
+                    '1': 'col-span-2 row-span-2 md:col-span-2 md:row-span-2',
+                    '3': 'md:col-span-2',
+                    '5': 'md:row-span-2',
+                    '7': 'col-span-2',
+                    '10': 'md:col-span-2 md:row-span-2',
+                    '14': 'md:col-span-2',
+                    '18': 'md:row-span-2',
+                    '21': 'col-span-2 row-span-2 md:col-span-2 md:row-span-2',
+                    '24': 'md:col-span-2',
+                    '29': 'md:row-span-2'
+                };
+                const captionPool = [
+                    'Piscina iluminada',
+                    'Montajes ceremoniales',
+                    'Jardines y áreas verdes',
+                    'Quincho y zona lounge',
+                    'Detalles arquitectónicos',
+                    'Experiencias gastronómicas'
+                ];
+
+                galleryFiles.forEach((file, index) => {
+                    const anchor = document.createElement('a');
+                    const imagePath = `images/galeria/${file}`;
+                    const spanClasses = highlightSpans[file.replace('.jpeg', '')] || '';
+                    const caption = captionPool[index % captionPool.length];
+
+                    anchor.href = imagePath;
+                    anchor.setAttribute('data-src', imagePath);
+                    anchor.setAttribute('data-sub-html', `<h4>${caption}</h4><p>Centro de Eventos Montpellier</p>`);
+                    anchor.className = `group relative block w-full h-full overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 ${spanClasses}`;
+                    anchor.innerHTML = `
+                        <img src="${imagePath}" alt="Galería Montpellier ${index + 1}" loading="lazy" class="w-full h-full object-cover scale-105 group-hover:scale-110 transition-transform duration-700" />
+                        <div class="absolute inset-0 bg-gradient-to-t from-dark-elegant/80 via-dark-elegant/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-4">
+                            <p class="text-white text-sm font-semibold tracking-wide">${caption}</p>
+                        </div>
+                    `;
+                    galleryGrid.appendChild(anchor);
+                });
+
+                lightGallery(galleryGrid, {
+                    selector: 'a',
+                    plugins: [lgZoom, lgThumbnail],
+                    speed: 500,
+                    thumbnail: true,
+                    licenseKey: '0000-0000-000-0000'
+                });
+            }
 
             hamburger.addEventListener('click', () => {
                 const isOpen = hamburger.getAttribute('aria-expanded') === 'true';
