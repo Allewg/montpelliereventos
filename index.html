@@ -15,7 +15,6 @@
     <link rel="preconnect" href="https://cdn.jsdelivr.net">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@2.7.2/css/lightgallery.min.css" integrity="sha256-o4cPyJ8+nQpKhzYdQbX9Ix6cLm+JqAUCaPNgm6kKiCk=" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script>
         tailwind.config = {
             theme: {
@@ -906,6 +905,29 @@
         </div>
     </section>
 
+    <!-- Modal Galería -->
+    <div id="gallery-lightbox" class="hidden fixed inset-0 z-[60] bg-dark-elegant/95 backdrop-blur-md px-4 py-8 flex items-center justify-center">
+        <button id="gallery-lightbox-close" class="absolute top-6 right-6 w-12 h-12 rounded-full bg-white/10 border border-gold-accent/30 flex items-center justify-center text-white hover:bg-gold-accent hover:text-dark-elegant transition-all duration-300 shadow-lg" aria-label="Cerrar galería">
+            <i data-lucide="x" class="w-6 h-6"></i>
+        </button>
+        <button id="gallery-lightbox-prev" class="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/10 border border-gold-accent/30 flex items-center justify-center text-white hover:bg-gold-accent hover:text-dark-elegant transition-all duration-300 shadow-lg" aria-label="Imagen anterior">
+            <i data-lucide="chevron-left" class="w-6 h-6"></i>
+        </button>
+        <button id="gallery-lightbox-next" class="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/10 border border-gold-accent/30 flex items-center justify-center text-white hover:bg-gold-accent hover:text-dark-elegant transition-all duration-300 shadow-lg" aria-label="Imagen siguiente">
+            <i data-lucide="chevron-right" class="w-6 h-6"></i>
+        </button>
+
+        <div class="w-full max-w-5xl mx-auto space-y-6">
+            <div class="w-full rounded-3xl overflow-hidden bg-black/50 shadow-2xl border border-white/10">
+                <img id="gallery-lightbox-image" src="" alt="Galería Montpellier" class="w-full h-[60vh] md:h-[70vh] object-contain transition-opacity duration-500 opacity-0" />
+            </div>
+            <div class="text-center space-y-1">
+                <p id="gallery-lightbox-caption" class="text-lg font-semibold text-white tracking-wide"></p>
+                <p class="text-xs uppercase tracking-[0.3em] text-white/60">Usa las flechas o arrastra para navegar</p>
+            </div>
+        </div>
+    </div>
+
     <!-- SECCIÓN PRECIOS -->
     <section id="servicios" class="precios-section bg-gradient-to-br from-gray-50 via-white to-gray-50 py-20">
         <div class="container mx-auto px-4">
@@ -1386,11 +1408,6 @@
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
     <!-- Swiper JS CDN -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <!-- LightGallery CDN -->
-    <script src="https://cdn.jsdelivr.net/npm/lightgallery@2.7.2/lightgallery.min.js" integrity="sha256-LHFI8XbVivlTunP3e5+7Dn25eYoJM6W0l7McRqyt-ou" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/lightgallery@2.7.2/plugins/zoom/lg-zoom.min.js" integrity="sha256-XfHg+e1FX3hLEqEooctF+taXLH1KcBhl+PETKqs3c9U" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/lightgallery@2.7.2/plugins/thumbnail/lg-thumbnail.min.js" integrity="sha256-l1hIvOAKT2F+9nLI42nx3bNMO77VYdk4ymb6qAMRbrQ" crossorigin="anonymous"></script>
-
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             lucide.createIcons();
@@ -1399,8 +1416,59 @@
             const hamburger = document.getElementById('hamburger');
             const mobileMenu = document.getElementById('mobile-menu');
 
-            // Dynamic gallery
+            // Dynamic gallery with custom lightbox
             const galleryGrid = document.getElementById('gallery-grid');
+            const galleryModal = document.getElementById('gallery-lightbox');
+            const galleryImage = document.getElementById('gallery-lightbox-image');
+            const galleryCaption = document.getElementById('gallery-lightbox-caption');
+            const galleryPrevBtn = document.getElementById('gallery-lightbox-prev');
+            const galleryNextBtn = document.getElementById('gallery-lightbox-next');
+            const galleryCloseBtn = document.getElementById('gallery-lightbox-close');
+            let galleryItems = [];
+            let galleryCurrentIndex = 0;
+            let galleryTouchStartX = null;
+            let isGalleryOpen = false;
+
+            const updateGalleryLightbox = () => {
+                if (!galleryItems.length || !galleryImage) return;
+                const currentItem = galleryItems[galleryCurrentIndex];
+                galleryImage.classList.add('opacity-0');
+                galleryImage.onload = () => galleryImage.classList.remove('opacity-0');
+                galleryImage.src = currentItem.src;
+                galleryImage.alt = currentItem.caption;
+                if (galleryCaption) {
+                    galleryCaption.textContent = currentItem.caption;
+                }
+            };
+
+            const openGalleryLightbox = (index) => {
+                if (!galleryModal || !galleryItems.length) return;
+                galleryCurrentIndex = index;
+                updateGalleryLightbox();
+                galleryModal.classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
+                isGalleryOpen = true;
+            };
+
+            const closeGalleryLightbox = () => {
+                if (!galleryModal) return;
+                galleryModal.classList.add('hidden');
+                document.body.style.overflow = 'auto';
+                isGalleryOpen = false;
+            };
+
+            const showNextImage = () => {
+                if (!galleryItems.length) return;
+                galleryCurrentIndex = (galleryCurrentIndex + 1) % galleryItems.length;
+                updateGalleryLightbox();
+            };
+
+            const showPrevImage = () => {
+                if (!galleryItems.length) return;
+                galleryCurrentIndex = (galleryCurrentIndex - 1 + galleryItems.length) % galleryItems.length;
+                updateGalleryLightbox();
+            };
+
             if (galleryGrid) {
                 const galleryFiles = Array.from({ length: 31 }, (_, index) => `${index + 1}.jpeg`);
                 const highlightSpans = {
@@ -1424,33 +1492,67 @@
                     'Experiencias gastronómicas'
                 ];
 
-                galleryFiles.forEach((file, index) => {
-                    const anchor = document.createElement('a');
-                    const imagePath = `images/galeria/${file}`;
-                    const spanClasses = highlightSpans[file.replace('.jpeg', '')] || '';
-                    const caption = captionPool[index % captionPool.length];
+                galleryItems = galleryFiles.map((file, index) => ({
+                    src: `images/galeria/${file}`,
+                    caption: captionPool[index % captionPool.length]
+                }));
 
-                    anchor.href = imagePath;
-                    anchor.setAttribute('data-src', imagePath);
-                    anchor.setAttribute('data-sub-html', `<h4>${caption}</h4><p>Centro de Eventos Montpellier</p>`);
-                    anchor.className = `group relative block w-full h-full overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 ${spanClasses}`;
-                    anchor.innerHTML = `
-                        <img src="${imagePath}" alt="Galería Montpellier ${index + 1}" loading="lazy" class="w-full h-full object-cover scale-105 group-hover:scale-110 transition-transform duration-700" />
+                galleryItems.forEach((item, index) => {
+                    const tile = document.createElement('button');
+                    const spanClasses = highlightSpans[String(index + 1)] || '';
+                    tile.type = 'button';
+                    tile.setAttribute('aria-label', `Abrir imagen de ${item.caption}`);
+                    tile.className = `group relative block w-full h-full overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 focus:ring-2 focus:ring-gold-accent focus:outline-none ${spanClasses}`;
+                    tile.innerHTML = `
+                        <img src="${item.src}" alt="${item.caption}" loading="lazy" class="w-full h-full object-cover scale-105 group-hover:scale-110 transition-transform duration-700" />
                         <div class="absolute inset-0 bg-gradient-to-t from-dark-elegant/80 via-dark-elegant/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-4">
-                            <p class="text-white text-sm font-semibold tracking-wide">${caption}</p>
+                            <p class="text-white text-sm font-semibold tracking-wide">${item.caption}</p>
                         </div>
                     `;
-                    galleryGrid.appendChild(anchor);
-                });
-
-                lightGallery(galleryGrid, {
-                    selector: 'a',
-                    plugins: [lgZoom, lgThumbnail],
-                    speed: 500,
-                    thumbnail: true,
-                    licenseKey: '0000-0000-000-0000'
+                    tile.addEventListener('click', () => openGalleryLightbox(index));
+                    galleryGrid.appendChild(tile);
                 });
             }
+
+            if (galleryPrevBtn) galleryPrevBtn.addEventListener('click', showPrevImage);
+            if (galleryNextBtn) galleryNextBtn.addEventListener('click', showNextImage);
+            if (galleryCloseBtn) galleryCloseBtn.addEventListener('click', closeGalleryLightbox);
+            if (galleryModal) {
+                galleryModal.addEventListener('click', (event) => {
+                    if (event.target === galleryModal) {
+                        closeGalleryLightbox();
+                    }
+                });
+                galleryModal.addEventListener('touchstart', (event) => {
+                    galleryTouchStartX = event.changedTouches[0].screenX;
+                });
+                galleryModal.addEventListener('touchend', (event) => {
+                    if (galleryTouchStartX === null) return;
+                    const touchEndX = event.changedTouches[0].screenX;
+                    const deltaX = touchEndX - galleryTouchStartX;
+                    if (Math.abs(deltaX) > 60) {
+                        if (deltaX < 0) {
+                            showNextImage();
+                        } else {
+                            showPrevImage();
+                        }
+                    }
+                    galleryTouchStartX = null;
+                });
+            }
+
+            document.addEventListener('keydown', (event) => {
+                if (!isGalleryOpen) return;
+                if (event.key === 'Escape') {
+                    closeGalleryLightbox();
+                }
+                if (event.key === 'ArrowRight') {
+                    showNextImage();
+                }
+                if (event.key === 'ArrowLeft') {
+                    showPrevImage();
+                }
+            });
 
             hamburger.addEventListener('click', () => {
                 const isOpen = hamburger.getAttribute('aria-expanded') === 'true';
